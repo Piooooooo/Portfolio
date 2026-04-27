@@ -9,7 +9,9 @@ import {
   skillGroups,
 } from "@/data/portfolio";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useState } from "react";
+import { GitHubCalendar } from "react-github-calendar";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -22,6 +24,7 @@ const navLinks = [
   { label: "Projects", href: "#projects" },
   { label: "Education", href: "#education" },
   { label: "Experience", href: "#experience" },
+  { label: "GitHub", href: "#github" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -155,23 +158,33 @@ function HeroSection() {
         className="absolute inset-0 bg-[linear-gradient(110deg,rgba(56,189,248,0.12),rgba(45,212,191,0.08),transparent_70%)]"
       />
 
-      <div className="relative z-10 grid items-center gap-10 lg:grid-cols-[1.25fr_0.75fr]">
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.12, duration: 0.42 }}
-          className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-200 sm:text-sm"
-        >
-          {profile.role}
-        </motion.p>
+      <div className="relative z-10 grid items-start gap-10 lg:grid-cols-[1.25fr_0.75fr]">
+        {/* Left column: profile image, role, name, intro, buttons */}
+        <div className="space-y-6">
+          {/* Profile section with image */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.12, duration: 0.42 }}
+          >
+            {/* TODO: Place your actual profile image at public/profile.png */}
+            <Image
+              src="/profile.png"
+              alt="Profile picture of Affif Chowdhury"
+              width={128}
+              height={128}
+              className="w-20 h-20 lg:w-32 lg:h-32 rounded-full border-2 border-cyan-200/30 shadow-lg object-cover flex-shrink-0"
+              priority
+            />
+          </motion.div>
 
-        <div>
+          {/* Hero heading and content */}
           <motion.h1
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.48 }}
             id="hero-heading"
-            className="mt-3 text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl"
+            className="text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl"
           >
             {profile.name}
           </motion.h1>
@@ -180,7 +193,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.28, duration: 0.5 }}
-            className="mt-6 max-w-2xl text-base leading-relaxed text-slate-200 sm:text-lg"
+            className="max-w-2xl text-base leading-relaxed text-slate-200 sm:text-lg"
           >
             {profile.intro}
           </motion.p>
@@ -189,7 +202,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.36, duration: 0.5 }}
-            className="mt-8 flex flex-wrap gap-4"
+            className="flex flex-wrap gap-4"
           >
             <a
               href="#projects"
@@ -205,11 +218,12 @@ function HeroSection() {
             </a>
           </motion.div>
 
-          <p className="mt-5 text-sm text-slate-300">
+          <p className="text-sm text-slate-300">
             Open to internships and junior software engineer opportunities.
           </p>
         </div>
 
+        {/* Right column: code snippets (visible on lg breakpoint and above) */}
         <div className="hidden lg:block">
           <div className="space-y-4">
             {floatingSnippets.map((snippet, index) => (
@@ -607,6 +621,31 @@ function ContactSection() {
   );
 }
 
+function GitHubContributionsSection() {
+  return (
+    <motion.section
+      id="github"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.55 }}
+      className="glass-card section-anchor"
+    >
+      <SectionHeading title="GitHub Activity" subtitle="Coding Activity" />
+      <p className="mb-6 text-sm leading-relaxed text-slate-300">
+        A live view of my open-source and project activity.
+      </p>
+
+      <div className="overflow-x-auto rounded-2xl border border-white/10 bg-slate-900/45 p-5 sm:p-6">
+        <div className="flex justify-center py-4">
+          <GitHubCalendar username="Piooooooo" colorScheme="dark" />
+        </div>
+      </div>
+    </motion.section>
+  );
+}
+
 function Footer() {
   return (
     <footer className="pb-12 pt-2 text-center text-sm text-slate-400">
@@ -642,6 +681,7 @@ export default function PortfolioPage() {
           <ProjectsSection />
           <EducationSection />
           <ExperienceSection />
+          <GitHubContributionsSection />
           <ContactSection />
           <Footer />
         </div>
