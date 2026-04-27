@@ -9,9 +9,16 @@ import {
   skillGroups,
 } from "@/data/portfolio";
 import { AnimatePresence, motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useState } from "react";
-import { GitHubCalendar } from "react-github-calendar";
+import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FiGlobe, FiMail } from "react-icons/fi";
+
+const GitHubCalendar = dynamic(
+  () => import("react-github-calendar").then((mod) => mod.GitHubCalendar),
+  { ssr: false },
+);
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -474,8 +481,38 @@ function ExperienceSection() {
 }
 
 function ContactSection() {
-  const formatLink = (link: string) =>
-    link.replace(/^https?:\/\//, "").replace(/\/$/, "");
+  const socialLinks = [
+    {
+      label: "Email",
+      href: "mailto:affifchowdhury96@gmail.com",
+      icon: FiMail,
+    },
+    {
+      label: "GitHub",
+      href: "https://github.com/Piooooooo",
+      icon: FaGithub,
+    },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/affif-c-5453a9252",
+      icon: FaLinkedin,
+    },
+    {
+      label: "Instagram",
+      href: "#",
+      icon: FaInstagram,
+    },
+    {
+      label: "Facebook",
+      href: "#",
+      icon: FaFacebook,
+    },
+    {
+      label: "Website",
+      href: "#",
+      icon: FiGlobe,
+    },
+  ];
 
   return (
     <motion.section
@@ -488,134 +525,31 @@ function ContactSection() {
       className="glass-card section-anchor"
     >
       <SectionHeading title="Contact" subtitle="Let's Connect" />
-      <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-        <div className="space-y-4">
-          <a href={`mailto:${profile.email}`} className="contact-card block">
-            <p className="text-xs uppercase tracking-wider text-slate-400">
-              Email
-            </p>
-            <p className="mt-2 text-sm font-medium text-white">
-              {profile.email}
-            </p>
-          </a>
-
-          <a
-            href={profile.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="contact-card block"
-          >
-            <p className="text-xs uppercase tracking-wider text-slate-400">
-              GitHub
-            </p>
-            <p className="mt-2 text-sm font-medium text-white">
-              {formatLink(profile.github)}
-            </p>
-          </a>
-
-          <a
-            href={profile.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="contact-card block"
-          >
-            <p className="text-xs uppercase tracking-wider text-slate-400">
-              LinkedIn
-            </p>
-            <p className="mt-2 text-sm font-medium text-white">
-              {formatLink(profile.linkedin)}
-            </p>
-          </a>
-
-          <div className="contact-card">
-            <p className="text-xs uppercase tracking-wider text-slate-400">
-              Location
-            </p>
-            <p className="mt-2 text-sm font-medium text-white">
-              {profile.location}
-            </p>
-          </div>
-        </div>
-
-        <motion.form
-          onSubmit={(event) => event.preventDefault()}
-          className="rounded-2xl border border-white/10 bg-slate-900/45 p-5 sm:p-6"
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.15 }}
-          aria-label="Contact form"
-        >
-          <h3 className="text-lg font-semibold text-white">Send a Message</h3>
-          <p className="mt-2 text-sm text-slate-300">
-            This form is frontend-only for now and can be connected to a backend
-            service later.
+      <div className="flex justify-center">
+        <div className="w-full max-w-3xl rounded-3xl border border-white/10 bg-slate-900/45 px-5 py-6 text-center shadow-[0_15px_45px_rgba(4,10,20,0.35)] sm:px-6 sm:py-8">
+          <p className="mx-auto mb-6 max-w-2xl text-center text-sm leading-7 text-slate-300">
+            Have a project, opportunity, or collaboration in mind? Feel free to
+            reach out.
           </p>
 
-          <div className="mt-5 space-y-4">
-            <div>
-              <label
-                htmlFor="contact-name"
-                className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.16em] text-slate-400"
+          <div className="flex flex-wrap justify-center gap-4">
+            {socialLinks.map(({ label, href, icon: Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target={href === "#" ? undefined : "_blank"}
+                rel={href === "#" ? undefined : "noopener noreferrer"}
+                className="group relative inline-flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-slate-950 text-slate-200 shadow-sm transition duration-300 hover:scale-105 hover:border-cyan-300/50 hover:bg-slate-900/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/40"
+                aria-label={label}
               >
-                Name
-              </label>
-              <input
-                id="contact-name"
-                name="name"
-                type="text"
-                placeholder="Your full name"
-                autoComplete="name"
-                className="w-full rounded-xl border border-white/15 bg-slate-950/60 px-4 py-3 text-sm text-white outline-none transition-all placeholder:text-slate-500 focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20"
-                required
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="contact-email"
-                className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.16em] text-slate-400"
-              >
-                Email
-              </label>
-              <input
-                id="contact-email"
-                name="email"
-                type="email"
-                placeholder="your.email@example.com"
-                autoComplete="email"
-                className="w-full rounded-xl border border-white/15 bg-slate-950/60 px-4 py-3 text-sm text-white outline-none transition-all placeholder:text-slate-500 focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20"
-                required
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="contact-message"
-                className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.16em] text-slate-400"
-              >
-                Message
-              </label>
-              <textarea
-                id="contact-message"
-                name="message"
-                rows={5}
-                placeholder="Tell me about your project or opportunity..."
-                className="w-full resize-none rounded-xl border border-white/15 bg-slate-950/60 px-4 py-3 text-sm text-white outline-none transition-all placeholder:text-slate-500 focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20"
-                required
-              />
-            </div>
+                <Icon className="h-6 w-6" />
+                <span className="absolute -bottom-7 left-1/2 w-max -translate-x-1/2 whitespace-nowrap text-[0.65rem] uppercase tracking-[0.28em] text-slate-300 opacity-0 transition duration-300 group-hover:opacity-100">
+                  {label}
+                </span>
+              </a>
+            ))}
           </div>
-
-          <motion.button
-            type="submit"
-            whileHover={{ y: -2, scale: 1.01 }}
-            whileTap={{ scale: 0.99 }}
-            className="mt-5 inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-cyan-300 to-teal-300 px-5 py-3 text-sm font-semibold text-slate-900 shadow-lg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60"
-          >
-            Send Message
-          </motion.button>
-        </motion.form>
+        </div>
       </div>
     </motion.section>
   );

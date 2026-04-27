@@ -22,9 +22,12 @@ export const profile = {
   role: "Computer Science & Engineering Student",
   intro:
     "I build reliable, user-focused web applications and enjoy solving meaningful problems through clean engineering practices, full-stack development, and continuous learning.",
-  email: "alex.rahman.dev@gmail.com",
-  github: "https://github.com/alexrahman",
-  linkedin: "https://www.linkedin.com/in/alexrahman-dev",
+  email: "affifchowdhury96@gmail.com",
+  github: "https://github.com/Piooooooo",
+  linkedin: "https://www.linkedin.com/in/affif-c-5453a9252",
+  instagram: "https://instagram.com/yourusername", // TODO: update with your Instagram profile
+  facebook: "https://facebook.com/yourprofile", // TODO: update with your Facebook profile
+  website: "https://yourwebsite.com", // TODO: update with your personal website
   location: "Chattogram, Bangladesh",
   resumeLink: "#",
   contactLink: "#contact",
@@ -104,7 +107,7 @@ export const projects: Project[] = [
 
 export const education = {
   degree: "B.Sc. in Computer Science & Engineering",
-  institution: "Your University Name",
+  institution: "United International University",
   duration: "2022 - 2026",
   details:
     "Focused on software engineering, algorithms, databases, and modern web development, with active participation in project-based learning and technical communities.",
