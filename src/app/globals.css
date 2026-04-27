@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+  --background: #05070e;
+  --foreground: #f5f7ff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  letter-spacing: 0.01em;
+  text-rendering: optimizeLegibility;
+}
+
+.glass-card {
+  @apply rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl backdrop-blur-xl sm:p-8 lg:p-9;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),
+    0 12px 34px rgba(2, 6, 23, 0.35);
+}
+
+.contact-card {
+  @apply rounded-2xl border border-white/10 bg-slate-900/45 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/45 hover:bg-slate-900/70;
+}
+
+.section-anchor {
+  scroll-margin-top: 5.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
