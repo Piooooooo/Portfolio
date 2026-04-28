@@ -5,7 +5,8 @@ export type SkillGroup = {
     | "Backend"
     | "Database"
     | "Tools"
-    | "CS Fundamentals";
+    | "CS Fundamentals"
+    | "Currently Learning";
   items: string[];
 };
 
@@ -19,16 +20,18 @@ export type Project = {
 
 export const profile = {
   name: "Affif Chowdhury",
+  title: "CSE Student & Aspiring Full-Stack Developer",
   role: "Computer Science & Engineering Student",
   intro:
-    "I build reliable, user-focused web applications and enjoy solving meaningful problems through clean engineering practices, full-stack development, and continuous learning.",
+    "Building modern web applications and learning scalable software development.",
   email: "affifchowdhury96@gmail.com",
   github: "https://github.com/Piooooooo",
   linkedin: "https://www.linkedin.com/in/affif-c-5453a9252",
-  instagram: "https://instagram.com/yourusername", // TODO: update with your Instagram profile
-  facebook: "https://facebook.com/yourprofile", // TODO: update with your Facebook profile
-  website: "https://yourwebsite.com", // TODO: update with your personal website
-  location: "Chattogram, Bangladesh",
+  instagram: "#",
+  facebook: "#",
+  website: "#",
+  location: "Bangladesh",
+  university: "United International University",
   resumeLink: "#",
   contactLink: "#contact",
 };
@@ -47,7 +50,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     title: "Backend",
-    items: ["Node.js", "Express.js", "REST API"],
+    items: ["Node.js", "Express.js", "REST API", "API Design"],
   },
   {
     title: "Database",
@@ -68,38 +71,42 @@ export const skillGroups: SkillGroup[] = [
       "Computer Networks",
     ],
   },
+  {
+    title: "Currently Learning",
+    items: ["Next.js", "GraphQL", "Docker", "System Design"],
+  },
 ];
 
 export const projects: Project[] = [
   {
-    title: "AI Study Assistant",
+    title: "Portfolio Website",
     description:
-      "An AI-powered learning companion that summarizes lecture notes, generates adaptive quizzes, and creates personalized study plans for improved exam preparation.",
-    stack: ["Next.js", "OpenAI API", "Tailwind CSS"],
+      "A polished developer portfolio showcasing skills, projects, and a modern interface designed for internship-ready presentation.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     githubLink: "#",
     liveDemoLink: "#",
   },
   {
     title: "Student Management System",
     description:
-      "A full-stack academic platform for managing student records, attendance, and course workflows with secure role-based dashboards.",
+      "A full-stack academic platform for managing student records, attendance, and dashboards for students and faculty.",
     stack: ["React", "Node.js", "Express", "MongoDB"],
     githubLink: "#",
     liveDemoLink: "#",
   },
   {
-    title: "Online Course Platform",
+    title: "AI Study Assistant",
     description:
-      "A scalable e-learning platform with instructor course publishing, student progress tracking, and secure enrollment management.",
-    stack: ["Next.js", "PostgreSQL", "Prisma"],
+      "An AI-driven study tool that summarizes notes, generates quizzes, and supports adaptive learning workflows.",
+    stack: ["Next.js", "OpenAI API", "Tailwind CSS"],
     githubLink: "#",
     liveDemoLink: "#",
   },
   {
-    title: "Competitive Programming Tracker",
+    title: "GitHub Activity Dashboard",
     description:
-      "A performance analytics dashboard that tracks coding contest activity, rating trends, and problem-solving consistency over time.",
-    stack: ["React", "Firebase", "Chart.js"],
+      "A dashboard that visualizes coding activity, repository insights, and contribution trends across GitHub.",
+    stack: ["React", "GitHub API", "Chart.js"],
     githubLink: "#",
     liveDemoLink: "#",
   },

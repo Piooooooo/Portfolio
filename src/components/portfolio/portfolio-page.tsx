@@ -10,10 +10,30 @@ import {
 } from "@/data/portfolio";
 import { AnimatePresence, motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import Image from "next/image";
-import { useState } from "react";
-import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { FiGlobe, FiMail } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import {
+  FaFacebook,
+  FaGithub,
+  FaInstagram,
+  FaJava,
+  FaLinkedin,
+} from "react-icons/fa";
+import { FiMail } from "react-icons/fi";
+import {
+  SiC,
+  SiCplusplus,
+  SiGit,
+  SiGithub,
+  SiJavascript,
+  SiMongodb,
+  SiMysql,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPython,
+  SiReact,
+  SiTypescript,
+  SiVercel,
+} from "react-icons/si";
 
 const GitHubCalendar = dynamic(
   () => import("react-github-calendar").then((mod) => mod.GitHubCalendar),
@@ -33,6 +53,23 @@ const navLinks = [
   { label: "Experience", href: "#experience" },
   { label: "GitHub", href: "#github" },
   { label: "Contact", href: "#contact" },
+];
+
+const techIcons = [
+  { label: "C", Icon: SiC },
+  { label: "C++", Icon: SiCplusplus },
+  { label: "Java", Icon: FaJava },
+  { label: "Python", Icon: SiPython },
+  { label: "JavaScript", Icon: SiJavascript },
+  { label: "TypeScript", Icon: SiTypescript },
+  { label: "React", Icon: SiReact },
+  { label: "Next.js", Icon: SiNextdotjs },
+  { label: "Node.js", Icon: SiNodedotjs },
+  { label: "MongoDB", Icon: SiMongodb },
+  { label: "MySQL", Icon: SiMysql },
+  { label: "Git", Icon: SiGit },
+  { label: "GitHub", Icon: SiGithub },
+  { label: "Vercel", Icon: SiVercel },
 ];
 
 function SectionHeading({
@@ -146,91 +183,124 @@ function HeroSection() {
       initial="hidden"
       animate="visible"
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 px-6 py-10 shadow-2xl backdrop-blur-xl sm:px-10 sm:py-12 lg:px-12"
+      className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 px-6 py-8 shadow-2xl backdrop-blur-xl sm:px-10 sm:py-10 lg:px-12 lg:py-12"
       aria-labelledby="hero-heading"
     >
       <motion.div
         animate={{ x: [0, 18, 0], y: [0, -16, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-20 right-0 h-72 w-72 rounded-full bg-cyan-400/25 blur-3xl"
+        className="absolute -top-16 right-0 h-64 w-64 rounded-full bg-cyan-400/25 blur-3xl"
       />
       <motion.div
         animate={{ x: [0, -16, 0], y: [0, 10, 0] }}
         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -bottom-24 left-8 h-64 w-64 rounded-full bg-teal-500/25 blur-3xl"
+        className="absolute -bottom-20 left-8 h-56 w-56 rounded-full bg-teal-500/20 blur-3xl"
       />
       <motion.div
-        animate={{ opacity: [0.25, 0.45, 0.25] }}
+        animate={{ opacity: [0.2, 0.4, 0.2] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
         className="absolute inset-0 bg-[linear-gradient(110deg,rgba(56,189,248,0.12),rgba(45,212,191,0.08),transparent_70%)]"
       />
 
-      <div className="relative z-10 grid items-start gap-10 lg:grid-cols-[1.25fr_0.75fr]">
-        {/* Left column: profile image, role, name, intro, buttons */}
+      <div className="relative z-10 grid gap-8 lg:grid-cols-[1fr_0.5fr] lg:items-start">
         <div className="space-y-6">
-          {/* Profile section with image */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
+          <motion.span
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.12, duration: 0.42 }}
+            transition={{ delay: 0.1, duration: 0.4 }}
+            className="inline-flex rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-cyan-100"
           >
-            {/* TODO: Place your actual profile image at public/profile.png */}
-            <Image
-              src="/profile.png"
-              alt="Profile picture of Affif Chowdhury"
-              width={128}
-              height={128}
-              className="w-20 h-20 lg:w-32 lg:h-32 rounded-full border-2 border-cyan-200/30 shadow-lg object-cover flex-shrink-0"
-              priority
-            />
+            Available for internships
+          </motion.span>
+
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.18, duration: 0.45 }}
+            className="space-y-5"
+          >
+            <p className="text-sm uppercase tracking-[0.35em] text-cyan-200/80">
+              Hello, I'm
+            </p>
+            <div className="flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:gap-8">
+              <motion.img
+                src="/profile.png"
+                alt="Profile picture of Affif Chowdhury"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.25, duration: 0.45 }}
+                className="h-24 w-24 rounded-full border-2 border-cyan-200/40 shadow-lg object-cover lg:h-32 lg:w-32 flex-shrink-0"
+              />
+              <h1
+                id="hero-heading"
+                className="text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-5xl"
+              >
+                {profile.name}
+              </h1>
+            </div>
+            <p className="text-lg font-semibold text-cyan-100/90 sm:text-xl">
+              {profile.title}
+            </p>
+            <p className="max-w-2xl text-base leading-8 text-slate-200 sm:text-lg">
+              {profile.intro}
+            </p>
+            <div className="flex flex-wrap items-center gap-3 text-sm text-slate-400">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/70 px-3 py-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-cyan-300" />
+                {profile.location}
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/70 px-3 py-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-cyan-300" />
+                {profile.university}
+              </span>
+            </div>
           </motion.div>
 
-          {/* Hero heading and content */}
-          <motion.h1
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.48 }}
-            id="hero-heading"
-            className="text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl"
-          >
-            {profile.name}
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.28, duration: 0.5 }}
-            className="max-w-2xl text-base leading-relaxed text-slate-200 sm:text-lg"
-          >
-            {profile.intro}
-          </motion.p>
-
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.36, duration: 0.5 }}
-            className="flex flex-wrap gap-4"
+            transition={{ delay: 0.28, duration: 0.45 }}
+            className="flex flex-wrap items-center justify-center gap-3 sm:justify-start"
           >
             <a
-              href="#projects"
-              className="rounded-full bg-gradient-to-r from-cyan-300 to-teal-300 px-6 py-3 text-sm font-semibold text-slate-900 transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60"
+              href="#contact"
+              className="rounded-full bg-gradient-to-r from-cyan-300 to-teal-300 px-5 py-3 text-sm font-semibold text-slate-900 transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60"
             >
-              Explore Projects
+              Get in Touch
+            </a>
+            <a
+              href="#projects"
+              className="rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-cyan-300 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60"
+            >
+              View Projects
             </a>
             <a
               href={profile.resumeLink}
-              className="rounded-full border border-white/25 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-cyan-300 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60"
+              className="rounded-full border border-white/15 bg-slate-950/80 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-cyan-300 hover:bg-slate-900/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60"
             >
               Download CV
             </a>
           </motion.div>
 
-          <p className="text-sm text-slate-300">
-            Open to internships and junior software engineer opportunities.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.36, duration: 0.45 }}
+            className="mt-4 flex flex-wrap items-center justify-center gap-3 sm:justify-start"
+          >
+            {techIcons.map(({ label, Icon }) => (
+              <div
+                key={label}
+                className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-slate-950/80 text-slate-200 transition duration-300 hover:border-cyan-300/40 hover:bg-slate-900/90"
+                aria-label={label}
+                title={label}
+              >
+                <Icon className="h-5 w-5" />
+              </div>
+            ))}
+          </motion.div>
         </div>
 
-        {/* Right column: code snippets (visible on lg breakpoint and above) */}
         <div className="hidden lg:block">
           <div className="space-y-4">
             {floatingSnippets.map((snippet, index) => (
@@ -347,11 +417,11 @@ function ProjectsSection() {
       transition={{ duration: 0.55 }}
       className="glass-card section-anchor"
     >
-      <SectionHeading title="Projects" subtitle="Selected Work" />
+      <SectionHeading title="Projects" subtitle="Featured Work" />
       <p className="mb-6 max-w-3xl text-sm leading-relaxed text-slate-300 sm:text-base">
-        A curated set of practical projects demonstrating full-stack
-        engineering, product thinking, and strong implementation skills relevant
-        to internship and junior developer roles.
+        A curated set of projects designed to highlight full-stack development,
+        user-facing polish, and engineering skills that are a strong fit for
+        internships and early career roles.
       </p>
       <div className="grid gap-5 md:grid-cols-2">
         {projects.map((project, index) => (
@@ -362,12 +432,20 @@ function ProjectsSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.35, delay: index * 0.06 }}
             whileHover={{ y: -7 }}
-            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900/45 p-5 transition-colors duration-300 hover:border-cyan-300/45"
+            className="group relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/45 p-6 transition-colors duration-300 hover:border-cyan-300/45"
           >
             <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-cyan-300/10 blur-2xl" />
             </div>
-            <h3 className="text-lg font-semibold text-white transition-colors group-hover:text-cyan-200">
+            <div className="flex items-center justify-between gap-4">
+              <span className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300">
+                0{index + 1}
+              </span>
+              <span className="text-xs uppercase tracking-[0.28em] text-slate-500">
+                Featured Project
+              </span>
+            </div>
+            <h3 className="mt-4 text-xl font-semibold text-white transition-colors group-hover:text-cyan-200">
               {project.title}
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-slate-300">
@@ -377,20 +455,20 @@ function ProjectsSection() {
               {project.stack.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded-full border border-cyan-200/25 bg-cyan-300/10 px-2.5 py-1 text-xs font-medium text-cyan-100"
+                  className="rounded-full border border-cyan-200/25 bg-cyan-300/10 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-cyan-100"
                 >
                   {tech}
                 </span>
               ))}
             </div>
 
-            <div className="mt-5 flex items-center gap-3">
+            <div className="mt-5 flex flex-wrap gap-3">
               <a
                 href={project.githubLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${project.title} source code on GitHub`}
-                className="rounded-lg border border-white/20 bg-white/5 px-3 py-2 text-xs font-semibold text-slate-100 transition-all duration-300 hover:border-cyan-300/60 hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60"
+                className="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs font-semibold text-slate-100 transition-all duration-300 hover:border-cyan-300/60 hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60"
               >
                 View Code
               </a>
@@ -399,7 +477,7 @@ function ProjectsSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${project.title} live demo`}
-                className="rounded-lg bg-gradient-to-r from-cyan-300 to-teal-300 px-3 py-2 text-xs font-semibold text-slate-900 transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60"
+                className="rounded-full bg-gradient-to-r from-cyan-300 to-teal-300 px-4 py-2 text-xs font-semibold text-slate-900 transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60"
               >
                 Live Preview
               </a>
@@ -507,11 +585,6 @@ function ContactSection() {
       href: "#",
       icon: FaFacebook,
     },
-    {
-      label: "Website",
-      href: "#",
-      icon: FiGlobe,
-    },
   ];
 
   return (
@@ -526,7 +599,7 @@ function ContactSection() {
     >
       <SectionHeading title="Contact" subtitle="Let's Connect" />
       <div className="flex justify-center">
-        <div className="w-full max-w-3xl rounded-3xl border border-white/10 bg-slate-900/45 px-5 py-6 text-center shadow-[0_15px_45px_rgba(4,10,20,0.35)] sm:px-6 sm:py-8">
+        <div className="w-full max-w-2xl rounded-3xl border border-white/10 bg-slate-900/45 px-6 py-6 text-center shadow-[0_15px_45px_rgba(4,10,20,0.35)] sm:px-8 sm:py-8">
           <p className="mx-auto mb-6 max-w-2xl text-center text-sm leading-7 text-slate-300">
             Have a project, opportunity, or collaboration in mind? Feel free to
             reach out.
@@ -537,13 +610,13 @@ function ContactSection() {
               <a
                 key={label}
                 href={href}
-                target={href === "#" ? undefined : "_blank"}
-                rel={href === "#" ? undefined : "noopener noreferrer"}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative inline-flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-slate-950 text-slate-200 shadow-sm transition duration-300 hover:scale-105 hover:border-cyan-300/50 hover:bg-slate-900/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/40"
                 aria-label={label}
               >
                 <Icon className="h-6 w-6" />
-                <span className="absolute -bottom-7 left-1/2 w-max -translate-x-1/2 whitespace-nowrap text-[0.65rem] uppercase tracking-[0.28em] text-slate-300 opacity-0 transition duration-300 group-hover:opacity-100">
+                <span className="absolute -bottom-7 left-1/2 w-max -translate-x-1/2 whitespace-nowrap rounded-full border border-white/10 bg-slate-950/95 px-2 py-1 text-[0.65rem] uppercase tracking-[0.28em] text-slate-300 opacity-0 transition duration-300 group-hover:opacity-100">
                   {label}
                 </span>
               </a>
@@ -556,6 +629,35 @@ function ContactSection() {
 }
 
 function GitHubContributionsSection() {
+  const [githubStats, setGithubStats] = useState<{
+    public_repos: number;
+    followers: number;
+    updated_at: string;
+  } | null>(null);
+
+  useEffect(() => {
+    fetch("https://api.github.com/users/Piooooooo")
+      .then((response) => response.json())
+      .then((data) => {
+        if (!data.message) {
+          setGithubStats({
+            public_repos: data.public_repos || 0,
+            followers: data.followers || 0,
+            updated_at: data.updated_at || new Date().toISOString(),
+          });
+        }
+      })
+      .catch(() => undefined);
+  }, []);
+
+  const lastActive = githubStats
+    ? new Date(githubStats.updated_at).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      })
+    : "Loading...";
+
   return (
     <motion.section
       id="github"
@@ -568,12 +670,53 @@ function GitHubContributionsSection() {
     >
       <SectionHeading title="GitHub Activity" subtitle="Coding Activity" />
       <p className="mb-6 text-sm leading-relaxed text-slate-300">
-        A live view of my open-source and project activity.
+        A live view of my open-source contribution rhythm and developer
+        activity.
       </p>
 
-      <div className="overflow-x-auto rounded-2xl border border-white/10 bg-slate-900/45 p-5 sm:p-6">
-        <div className="flex justify-center py-4">
-          <GitHubCalendar username="Piooooooo" colorScheme="dark" />
+      <div className="space-y-5">
+        <div className="overflow-x-auto rounded-2xl border border-white/10 bg-slate-900/45 p-5 sm:p-6">
+          <div className="flex justify-center py-4">
+            <GitHubCalendar username="Piooooooo" colorScheme="dark" />
+          </div>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-3">
+          <div className="rounded-3xl border border-white/10 bg-slate-950/75 p-5 text-slate-200 shadow-sm">
+            <p className="text-xs uppercase tracking-[0.3em] text-cyan-300/80">
+              Repositories
+            </p>
+            <p className="mt-4 text-3xl font-semibold text-white">
+              {githubStats ? githubStats.public_repos : "--"}
+            </p>
+            <p className="mt-2 text-sm text-slate-400">
+              Public repositories available on GitHub.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-white/10 bg-slate-950/75 p-5 text-slate-200 shadow-sm">
+            <p className="text-xs uppercase tracking-[0.3em] text-cyan-300/80">
+              Profile Activity
+            </p>
+            <p className="mt-4 text-3xl font-semibold text-white">
+              {githubStats ? lastActive : "Loading..."}
+            </p>
+            <p className="mt-2 text-sm text-slate-400">
+              Last update on GitHub profile data.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-white/10 bg-slate-950/75 p-5 text-slate-200 shadow-sm">
+            <p className="text-xs uppercase tracking-[0.3em] text-cyan-300/80">
+              Followers
+            </p>
+            <p className="mt-4 text-3xl font-semibold text-white">
+              {githubStats ? githubStats.followers : "--"}
+            </p>
+            <p className="mt-2 text-sm text-slate-400">
+              Community engagement on GitHub.
+            </p>
+          </div>
         </div>
       </div>
     </motion.section>
