@@ -238,14 +238,15 @@ function HeroSection() {
               <p className="text-sm uppercase tracking-[0.35em] text-cyan-200/80">
                 Hello, I&apos;m
               </p>
-              <div className="flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:gap-8">
+              <div className="flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:gap-8 overflow-visible">
                 <motion.img
                   src="/profile.png"
                   alt="Profile picture of Affif Chowdhury"
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.25, duration: 0.45 }}
-                  className="h-24 w-24 rounded-full border-2 border-cyan-200/40 shadow-lg object-cover lg:h-32 lg:w-32 flex-shrink-0"
+                  whileHover={{ scale: 1.22 }}
+                  transition={{ delay: 0.18, duration: 0.35 }}
+                  className="h-28 w-28 rounded-full border-2 border-cyan-200/40 shadow-lg object-cover lg:h-36 lg:w-36 flex-shrink-0 cursor-pointer will-change-transform z-10"
                 />
                 <h1
                   id="hero-heading"
