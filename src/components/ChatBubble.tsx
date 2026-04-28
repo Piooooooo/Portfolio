@@ -1,5 +1,3 @@
-import React from "react";
-
 type Props = {
   text?: string;
   showCursor?: boolean;
@@ -14,7 +12,11 @@ export default function ChatBubble({
   return (
     <div className={fullScreen ? "chat-bg" : ""}>
       <div className="chat-wrapper">
-        <div className="chat-bubble" role="region" aria-label="Floating code bubble">
+        <div
+          className="chat-bubble"
+          role="region"
+          aria-label="Floating code bubble"
+        >
           <pre className="chat-pre" aria-live="polite">
             {text}
             {showCursor && <span className="typing-cursor" />}

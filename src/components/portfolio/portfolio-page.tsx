@@ -317,31 +317,31 @@ function HeroSection() {
             </motion.div>
           </div>
 
-            <div className="flex justify-center lg:justify-end">
-              <div className="space-y-4">
-                {floatingSnippets.map((snippet, index) => (
-                  <motion.div
-                    key={snippet}
-                    initial={{ opacity: 0, x: 18 }}
-                    animate={{ opacity: 1, x: 0, y: [0, -14, 6, -8, 0] }}
-                    transition={{
-                      opacity: { delay: 0.3 + index * 0.08, duration: 0.45 },
-                      x: { delay: 0.3 + index * 0.08, duration: 0.45 },
-                      y: {
-                        delay: 0.5 + index * 0.12,
-                        duration: 5 + index * 1.2,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      },
-                    }}
-                    whileHover={{ y: -6 }}
-                    className="chat-bubble"
-                  >
-                    <pre className="chat-pre">{snippet}</pre>
-                  </motion.div>
-                ))}
-              </div>
+          <div className="flex justify-center lg:justify-end">
+            <div className="space-y-4">
+              {floatingSnippets.map((snippet, index) => (
+                <motion.div
+                  key={snippet}
+                  initial={{ opacity: 0, x: 18 }}
+                  animate={{ opacity: 1, x: 0, y: [0, -14, 6, -8, 0] }}
+                  transition={{
+                    opacity: { delay: 0.3 + index * 0.08, duration: 0.45 },
+                    x: { delay: 0.3 + index * 0.08, duration: 0.45 },
+                    y: {
+                      delay: 0.5 + index * 0.12,
+                      duration: 5 + index * 1.2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    },
+                  }}
+                  whileHover={{ y: -6 }}
+                  className="chat-bubble"
+                >
+                  <pre className="chat-pre">{snippet}</pre>
+                </motion.div>
+              ))}
             </div>
+          </div>
         </div>
       </div>
     </motion.section>

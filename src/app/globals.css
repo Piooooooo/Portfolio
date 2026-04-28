@@ -47,15 +47,30 @@ body {
 
 /* Floating chat-bubble styles */
 @keyframes float-bob {
-  0% { transform: translateY(0); }
-  25% { transform: translateY(-10px); }
-  50% { transform: translateY(0); }
-  75% { transform: translateY(6px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .chat-bg {
-  background: radial-gradient(circle at 10% 10%, rgba(19,40,66,0.6) 0%, rgba(6,10,21,0.9) 50%, rgba(2,6,12,1) 100%);
+  background: radial-gradient(
+    circle at 10% 10%,
+    rgba(19, 40, 66, 0.6) 0%,
+    rgba(6, 10, 21, 0.9) 50%,
+    rgba(2, 6, 12, 1) 100%
+  );
 }
 
 .chat-wrapper {
@@ -71,23 +86,35 @@ body {
   width: min(94%, 560px);
   border-radius: 30px;
   /* subtle diagonal gradient for premium depth */
-  background: linear-gradient(135deg, rgba(12,26,42,0.55), rgba(6,12,20,0.45));
+  background: linear-gradient(
+    135deg,
+    rgba(12, 26, 42, 0.55),
+    rgba(6, 12, 20, 0.45)
+  );
   border: 1px solid rgba(124, 255, 244, 0.12);
   /* outer glow + soft inner shadow */
-  box-shadow: 0 18px 40px rgba(6,140,160,0.10), 0 3px 10px rgba(3,12,20,0.5) inset;
+  box-shadow:
+    0 18px 40px rgba(6, 140, 160, 0.1),
+    0 3px 10px rgba(3, 12, 20, 0.5) inset;
   backdrop-filter: blur(8px) saturate(125%);
   padding: 12px 22px;
   animation: float-bob 6.2s ease-in-out infinite;
-  transition: box-shadow 260ms cubic-bezier(.2,.9,.2,1), transform 260ms cubic-bezier(.2,.9,.2,1);
+  transition:
+    box-shadow 260ms cubic-bezier(0.2, 0.9, 0.2, 1),
+    transform 260ms cubic-bezier(0.2, 0.9, 0.2, 1);
 }
 
 .chat-bubble:hover {
   transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 34px 80px rgba(6,140,160,0.16), 0 6px 22px rgba(3,12,20,0.55) inset;
+  box-shadow:
+    0 34px 80px rgba(6, 140, 160, 0.16),
+    0 6px 22px rgba(3, 12, 20, 0.55) inset;
 }
 
 .chat-pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'JetBrains Mono', monospace;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono",
+    "JetBrains Mono", monospace;
   color: rgba(170, 235, 245, 0.95);
   line-height: 1.7;
   white-space: pre-wrap;
@@ -96,7 +123,7 @@ body {
   font-size: 1rem;
   letter-spacing: 0.02em;
   padding: 2px 4px;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.25);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
 }
 
 .typing-cursor::after {
@@ -104,15 +131,24 @@ body {
   display: inline-block;
   width: 10px;
   height: 18px;
-  background: linear-gradient(90deg, rgba(124,255,244,0.95) 0%, rgba(124,255,244,0.65) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(124, 255, 244, 0.95) 0%,
+    rgba(124, 255, 244, 0.65) 100%
+  );
   margin-left: 6px;
   border-radius: 2px;
-  animation: blink 1s steps(2,start) infinite;
+  animation: blink 1s steps(2, start) infinite;
 }
 
 @keyframes blink {
-  0% { opacity: 1 }
-  50% { opacity: 0 }
-  100% { opacity: 1 }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-
